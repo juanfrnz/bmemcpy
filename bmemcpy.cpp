@@ -10,7 +10,7 @@ void print_bits(const char* data, size_t s) {
     std::cout << std::endl;
 }
 
-char setbits(unsigned char destination, 
+char set_bits(unsigned char destination, 
              unsigned char source,
              unsigned char at,
              unsigned char from,
@@ -28,11 +28,11 @@ void bmemcpy(char *dest, const char *src, size_t offset, size_t size)
     char r_offset = offset - byte * CHAR_BIT;
     size_t r_size = CHAR_BIT - r_offset > size ? size : CHAR_BIT - r_offset;
 
-    dest[byte] = setbits(dest[byte], src[0], r_offset, 0, r_size);
+    dest[byte] = set_bits(dest[byte], src[0], r_offset, 0, r_size);
 
     size_t remaining_size = size - r_size;
     if (remaining_size > 0) {
-        dest[byte + 1] = setbits(dest[byte + 1], 
+        dest[byte + 1] = set_bits(dest[byte + 1], 
                                  src[0], 
                                  0, 
                                  r_size, 

@@ -1,13 +1,13 @@
 #include "bmemcpy.hpp"
 
-char signal_data[] = { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
+char data[] = { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
 
 int main(int argc, char** argv) {
     int value = 0xabcde;
-    print_bits((char*)&value, 4);
+    print_bits((char*)&value, sizeof(value));
 
-    bmemcpy(signal_data, (char*)&value, 4, 10);
-    print_bits(signal_data, sizeof(signal_data));
+    bmemcpy(data, (char*)&value, 4, 10);
+    print_bits(data, sizeof(data));
 
     return 0;
 }
